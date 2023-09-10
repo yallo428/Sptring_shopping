@@ -1,4 +1,5 @@
 package com.example.spring_shopping.domain;
 
-public class Item {
+public enum DeliveryStatus {
+    READY, COMP
 }
