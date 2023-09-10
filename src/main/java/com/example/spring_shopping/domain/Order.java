@@ -20,14 +20,14 @@ public class Order {
     private Long id;
 
 
-    @ManyToOne // 다대일 관계 선언
+    @ManyToOne(fetch = FetchType.LAZY) // 다대일 관계 선언
     @JoinColumn(name = "member_id") //fk키 이름 설정
     private Member member;
 
-    @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<OrderItem> orderItems = new ArrayList<OrderItem>();
 
-    @OneToOne // 조회를 많이 하는 곳에 fk키를 넣는 것이 좋다
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL) // 조회를 많이 하는 곳에 fk키를 넣는 것이 좋다
     @JoinColumn(name = "delivery_id")
     private Delivery delivery;
 
@@ -35,5 +35,20 @@ public class Order {
 
     @Enumerated(EnumType.STRING)
     private OrderStatus status; // 주문 상태
+
+    public void setMember(Member member){
+        this.member = member;
+        member.getOrders().add(this);
+    }
+
+    public void addOrderItem(OrderItem orderItem){
+        orderItems.add(orderItem);
+        orderItem.setOrder(this);
+    }
+
+    public void setDelivery(Delivery delivery){
+        this.delivery = delivery;
+        delivery.setOrder(this);
+    }
 
 }
