@@ -1,7 +1,7 @@
 spring:
   datasource:
-    url: jdbc:h2:mem:test //메모리로 테스트 하는 법
-    username: sa
+    url : jdbc:h2:tcp://localhost/~/jpashop;MV_STORE=TRUE
+    username : sa
     driver-class-name: org.h2.Driver
 
   jpa:
@@ -12,8 +12,7 @@ spring:
         #show_sql: true
         format_sql: true
 
-#스프링은 설정이 되어 있이 않는다면 메모리로 돌려버린다. DB를 꺼도 정상작동
-#ddl-auto : create-drop은 만들고나서 delete해버린다
+
 logging:
   level:
     org.hibernate.sql: debug
