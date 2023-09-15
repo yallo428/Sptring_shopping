@@ -24,7 +24,4 @@ public class Member {
 
     @OneToMany(mappedBy = "member") //일대다 관계 선언 //관계 주인은 member가 아니다.
     private List<Order> orders = new ArrayList<Order>();
-
-
-
 }

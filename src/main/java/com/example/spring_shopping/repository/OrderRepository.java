@@ -2,6 +2,8 @@ package com.example.spring_shopping.repository;
 
 import com.example.spring_shopping.domain.Order;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -22,5 +24,13 @@ public class OrderRepository {
         return em.find(Order.class, id);
     }
 
-//    public List<Order> findAll(OrderSerach orderSerach){}
+//    public List<Order> findAll(OrderSearch orderSearch){
+//        em.createQuery("select o from Order o join o.member m "+
+//                "where o.status = :status " +
+//                "and m.name like :name"
+//                , Order.class)
+//                .setParameter("status", orderSearch.getOrderStatus())
+//                .setParameter("name", orderSearch.getMemberName())
+//                .getResultList();
+//    }
 }

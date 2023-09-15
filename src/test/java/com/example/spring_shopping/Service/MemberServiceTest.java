@@ -19,7 +19,7 @@ import static org.junit.Assert.*;
 public class MemberServiceTest {
 
     @Autowired
-    MemberService memberService;
+    com.example.spring_shopping.Service.MemberService memberService;
     @Autowired
     MemberRepository memberRepository;
     @Test

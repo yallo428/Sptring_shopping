@@ -27,7 +27,8 @@ public class OrderServiceTest {
     @Autowired
     EntityManager em;
 
-    @Autowired OrderService orderService;
+    @Autowired
+    com.example.spring_shopping.Service.OrderService orderService;
     @Autowired OrderRepository orderRepository;
 
     @Test
