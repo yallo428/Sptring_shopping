@@ -27,7 +27,7 @@ public class MemberController {
     }
 
     /*
-        MemberForm안에 있는 NotEmpty를 인식시켬
+        @Valid MemberForm안에 있는 NotEmpty를 인식시켬
      */
     @PostMapping("/members/new")
     public String create(@Valid MemberForm form, BindingResult result){

@@ -9,6 +9,7 @@ import com.example.spring_shopping.domain.item.Item;
 import com.example.spring_shopping.repository.ItemRepository;
 import com.example.spring_shopping.repository.MemberRepository;
 import com.example.spring_shopping.repository.OrderRepository;
+import com.example.spring_shopping.repository.OrderSearch;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,7 +28,6 @@ public class OrderService {
     public Long order(Long memberId, Long itemId, int count) {
         Member member = memberRepository.findOne(memberId);
         Item item = itemRepository.findOne(itemId);
-
 
         Delivery delivery = new Delivery();
         delivery.setAddress(member.getAddress());
@@ -49,10 +49,8 @@ public class OrderService {
         이처럼 서비스에서 엔티티에 대한 요청만하고
         로직을 엔티티 안에서 구현하는 것을 도메인 모델 패턴이라고 한다
      */
-/*
-    public List<Order> findOrder(OrderSearch orderSearch){
-        return orderRepository.findAll(orderSearch);
+    public List<Order> findOrders(OrderSearch orderSearch){
+        return orderRepository.findAllByString(orderSearch);
     }
- */
 }
 
